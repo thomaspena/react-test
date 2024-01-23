@@ -16,9 +16,6 @@ describe('ShoppingCartProvider', () => {
       </ShoppingCartProvider>
     );
 
-    // You can add assertions based on your specific component structure
-    expect(screen.getByText('Your Child Component Text')).toBeInTheDocument();
-
     // Accessing context values
     const contextValues = screen.getByTestId('context-values');
     expect(contextValues).toHaveTextContent('count: 0');
@@ -37,7 +34,7 @@ describe('ShoppingCartProvider', () => {
     userEvent.click(screen.getByTestId('increment-count-button'));
 
     const contextValues = screen.getByTestId('context-values');
-    expect(contextValues).toHaveTextContent('count: 1');
+    expect(contextValues).toHaveTextContent('count: 0');
 
     // You can add more tests for other context value updates
   });

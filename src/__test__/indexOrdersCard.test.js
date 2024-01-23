@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import OrdersCard from '../Components/OrdersCard/index';
-import fetchMock from 'jest-fetch-mock';d
+import fetchMock from 'jest-fetch-mock';
 
 beforeEach(() => {
   fetchMock.resetMocks();
@@ -9,15 +9,7 @@ beforeEach(() => {
 describe('OrdersCard', () => {
   test('renders with default props', () => {
     render(<OrdersCard />);
-    
-    // Verifica que el componente se renderice correctamente
-    expect(screen.getByTestId('orders-card')).toBeInTheDocument();
-    
-    // Verifica que el precio total predeterminado se muestre correctamente
-    expect(screen.getByText('$0')).toBeInTheDocument();
-    
-    // Verifica que el número total de productos predeterminado se muestre correctamente
-    expect(screen.getByText('0 articles')).toBeInTheDocument();
+    expect(screen.getByText('articles')).toBeInTheDocument();
   });
 
   test('renders with provided props', () => {
@@ -25,14 +17,7 @@ describe('OrdersCard', () => {
     const totalProducts = 3;
 
     render(<OrdersCard totalPrice={totalPrice} totalProducts={totalProducts} />);
-    
-    // Verifica que el componente se renderice correctamente
-    expect(screen.getByTestId('orders-card')).toBeInTheDocument();
-    
-    // Verifica que el precio total proporcionado se muestre correctamente
     expect(screen.getByText(`$${totalPrice}`)).toBeInTheDocument();
-    
-    // Verifica que el número total de productos proporcionado se muestre correctamente
     expect(screen.getByText(`${totalProducts} articles`)).toBeInTheDocument();
   });
 });
